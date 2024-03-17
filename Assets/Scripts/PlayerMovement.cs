@@ -24,6 +24,9 @@ public class PlayerMovement : MonoBehaviour
     {
         _rigidbody = GetComponent<Rigidbody2D>();
         xnesne = GetComponent<SpriteRenderer>();
+
+        Invoke("Info", 0.1f);
+        
         
     }
 
@@ -87,17 +90,38 @@ public class PlayerMovement : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Collectible"))
         {
-            point += 10;
-            PointText.text = point.ToString();
+            CounterScript.Instance.point += 10;
+            PointText.text = CounterScript.Instance.point.ToString();
 
         }
 
+        if (collision.gameObject.CompareTag("Door1"))
+        {
+            SceneManager.LoadScene("Pazar");
 
+        }
+
+        if (collision.gameObject.CompareTag("Door2"))
+        {
+            SceneManager.LoadScene("Mutfak");
+
+        }
+
+        if (collision.gameObject.CompareTag("Door3"))
+        {
+            SceneManager.LoadScene("Market");
+
+        }
     }
 
     void Dead()
     {
-        SceneManager.LoadScene("Mutfak");
+        SceneManager.LoadScene("GameOver");
+    }
+
+     void Info()
+    {
+        PointText.text = CounterScript.Instance.point.ToString();
     }
 }
              
