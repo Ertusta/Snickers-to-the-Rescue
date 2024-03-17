@@ -14,7 +14,7 @@ public class MenuManager : MonoBehaviour
     {
         
     }
-    public void Hakkında()
+    public void Hakkinda()
     {
 
     }
